@@ -1,11 +1,16 @@
 class PokemonData:Scraper
 
+  url = https://pokemondb.net/pokedex
+
   def get_pokdex_list
-    Nokogiri::HTML(open("https://pokemondb.net/pokedex"))
+    Nokogiri::HTML(open("#{url}"))
   end
 
-  def scrape_pokemon
+  def scrape_pokedex_list
     self.get_pokdex_list.css(".panel li a")
   end
 
+  def get_pokemon_list
+    
+  end
 end

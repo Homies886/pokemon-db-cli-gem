@@ -1,14 +1,16 @@
 class PokemonData::Pokemon
 
-  attr_accessor :pokedex, :name, :description
+  attr_accessor :name, :description, :pokedex, :url #:moves
 
   @@all = []
 
-  def self.new_from_scrape(p)
-    self.new()
+  def self.new
+
   end
 
+  def initialize
 
+  end
 
 
 

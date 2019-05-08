@@ -1,16 +1,11 @@
-class PokemonData::Scraper
+class PokemonData:Scraper
 
-  def get_page
-    Nokogiri::HTML(open("https://pokemondb.net/pokedex/national"))
+  def get_pokdex_list
+    Nokogiri::HTML(open("https://pokemondb.net/pokedex"))
   end
 
   def scrape_pokemon
-    self.get_page.css(".infocard-lg-data")
+    self.get_pokdex_list.css(".panel li a")
   end
 
-  def add_pokemon
-    scrape_pokemon.each do |p|
-      PokemonData::Pokemon.new_from_scrape(p)
-    end
-  end  
 end

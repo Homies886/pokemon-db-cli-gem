@@ -1,0 +1,70 @@
+require 'nokogiri'
+require 'open-uri'
+
+#doc = Nokogiri::HTML(open("https://pokemondb.net/pokedex/national"))
+
+#suck = doc.css(".infocard-lg-data")
+
+#suck.each do |please|
+#  puts please.css("a.itype").text
+#end
+
+#suck.each do |please|
+#  please.css("a.itype").each do |blue|
+#    puts blue.text
+#  end
+#end
+
+# array = [1, 2, 3, 4]
+
+# array.each_with_index do |v, index|
+#   puts "#{(index + 1)}. #{v}"
+# end
+#suck.each do |pink|
+#  puts pink.text
+#end
+
+
+# a.itype is the typing for pokemon
+
+# ent-name is the pokemon name
+
+doc = Nokogiri::HTML(open("https://pokemondb.net/pokedex"))
+
+# doc.css(".panel li a").each do |g|
+#   games << g.text unless
+#     g.text == "All Pokémon" || g.text == "National Dex" || g.text == "Shinydex" || g.text == "Competitive Pokédex" || g.text == "Size Pokédex" || g.text == "Pokémon GO"
+# end
+
+
+# counter = 0
+
+# games.each do |h|
+#   puts "#{h.index(h) + (counter+=1)}. #{h}"
+# end
+
+# doc.css(".panel li a").each do |a|
+#   puts "https://pokemondb.net#{a.attribute("href")}"
+# end
+
+# doc.css(".panel li a").each do |g|
+#   Nokogiri::HTML(open("https://pokemondb.net#{g.attribute("href")}")).css(".ent-name").each do |n|
+#     puts n.text unless g.text == "All Pokémon" || g.text == "National Dex" || g.text == "Shinydex" || g.text == "Competitive Pokédex" || g.text == "Size Pokédex" || g.text == "Pokémon GO"
+#   end
+# end
+
+doc.css(".panel li a").each do |g|
+  Nokogiri::HTML(open("https://pokemondb.net#{g.attribute("href")}")).css(".ent-name").each do |n|
+    puts Nokogiri::HTML(open("https://pokemondb.net#{n.attribute("href")}")).css("p").first.text unless g.text == "All Pokémon" || g.text == "National Dex" || g.text == "Shinydex" || g.text == "Competitive Pokédex" || g.text == "Size Pokédex" || g.text == "Pokémon GO"
+  end
+end
+
+# punk = Nokogiri::HTML(open("https://pokemondb.net/pokedex/game/x-y"))
+
+# punk.css(".ent-name").each do |k|
+#   puts Nokogiri::HTML(open("https://pokemondb.net#{k.attribute("href")}")).css("p").first.text
+# end
+
+#Each pokedex has multiple pokemon
+#Each pokemon can be a part of multiple pokedexes
+#Each pokemon has a description

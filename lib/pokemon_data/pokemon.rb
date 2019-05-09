@@ -1,21 +1,23 @@
 class PokemonData::Pokemon
 
-  attr_accessor :name
-  attr_reader :pokedex, :description
+  attr_accessor :name, :pokemon_url, :pokemon, :description
 
   @@all = []
 
-  def initialize(name, pokedex = nil, description = nil)
+  def initialize(name=nil, pokemon_url=nil)
     @name = name
-    @pokedex = pokedex
-    @description = description
+    @pokemon_url = pokemon_url
+    @@all << self
   end
 
   def self.all
     @@all
   end
 
-    
+  def self.new_from_page(p)
+    self.new(p.text, "https://pokemondb.net#{p.attribute("href")}")
+  end
+
 
 
 

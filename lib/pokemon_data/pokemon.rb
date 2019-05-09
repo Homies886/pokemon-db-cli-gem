@@ -1,18 +1,21 @@
 class PokemonData::Pokemon
 
-  attr_accessor :name, :description, :pokedex, :url #:moves
+  attr_accessor :name
+  attr_reader :pokedex, :description
 
   @@all = []
 
-  def self.new
-
+  def initialize(name, pokedex = nil, description = nil)
+    @name = name
+    @pokedex = pokedex
+    @description = description
   end
 
-  def initialize
-
+  def self.all
+    @@all
   end
 
-
+    
 
 
 

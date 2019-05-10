@@ -10,7 +10,7 @@ class PokemonData:Scraper
 
   def make_pokedexes
     scrape_pokedexes.each do |p|
-      PokemonData:Pokemon.new_from_page(p)
+      PokemonData:Pokedex.new_from_page(p)
     end
-  end  
+  end
 end

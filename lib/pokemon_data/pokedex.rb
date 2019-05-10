@@ -1,6 +1,7 @@
 class PokemonData::Pokedex
 
-  attr_accessor :name, :pokedex_url, :list_pokemon
+  attr_accessor :name, :pokedex_url, :list_pokemon,
+  attr_reader :pokemon
 
   @@all = []
 
@@ -20,16 +21,33 @@ class PokemonData::Pokedex
   end
 
   def list_pokemon
-    @list_pokemon ||= pokedex.each do |n|
-      n.css(".ent-name").text
+    if @pokemon.empty
+      set_pokemon
+    end
+
+    @pokemon.each do |n, index|
+      puts "#{index} #{n.name}"
+    end
+
+    # Move to set pokemon
+  end
+
+  def set_pokemon
+    # This populates @pokemon with Pokemon objects
+    pokedex.each do |n|
+      name = n.css(".ent-name").text
+      href = n.css(".ent-name").href
+
+      @pokemon << Pokemon(name, href)
     end
   end
 
-  def pokedex
-    pokedex = Nokogiri::HTML(open(self.pokemon_url))
+  def get_pokemon(index)
+    @pokemon[index]
   end
 
-
-
+  def pokedex
+    Nokogiri::HTML(open(self.pokemon_url))
+  end
 
 end

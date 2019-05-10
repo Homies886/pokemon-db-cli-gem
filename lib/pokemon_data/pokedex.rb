@@ -1,6 +1,6 @@
 class PokemonData::Pokedex
 
-  attr_accessor :name, :pokedex_url, :list_pokemon, :pokemon_description
+  attr_accessor :name, :pokedex_url, :list_pokemon
 
   @@all = []
 
@@ -21,9 +21,8 @@ class PokemonData::Pokedex
 
   def list_pokemon
     @list_pokemon ||= pokedex.each do |n|
-      @pokemon << n.css(".ent-name").text
+      n.css(".ent-name").text
     end
-    @pokemon
   end
 
   def pokedex

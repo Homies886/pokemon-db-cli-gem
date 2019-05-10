@@ -1,6 +1,6 @@
-class PokemonData::Pokemon
+class PokemonData::Pokedex
 
-  attr_accessor :name, :pokedex_url, :pokemon, :description
+  attr_accessor :name, :pokedex_url, :list_pokemon, :pokemon_description
 
   @@all = []
 
@@ -8,6 +8,7 @@ class PokemonData::Pokemon
     @name = name
     @pokedex_url = pokedex_url
     @@all << self
+    @pokemon = []
   end
 
   def self.all
@@ -19,12 +20,17 @@ class PokemonData::Pokemon
   end
 
   def list_pokemon
-    @list_pokemon ||= doc.each do |n|
-      n.css(".ent-name").text
+    @list_pokemon ||= pokedex.each do |n|
+      @pokemon << n.css(".ent-name").text
+    end
+    @pokemon
   end
 
-  def doc
-    doc = Nokogiri::HTML(open(self.pokemon_url))
+  def pokedex
+    pokedex = Nokogiri::HTML(open(self.pokemon_url))
   end
+
+
+
 
 end

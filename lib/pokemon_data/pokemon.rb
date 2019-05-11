@@ -1,22 +1,29 @@
 class PokemonData::Pokemon
 
-  attr_accessor :name, :href, :description
+  attr_accessor :name, :pokemon_url, :description
 
-  def initialize(name=nil, href=nil)
-    @name = name
-    @href = href
-    @description = get_description
+  @@all = []
+
+  def self.new_from_pokedex(name, pokemon_url)
+    self.new(name, pokemon_url)
   end
 
-  def self.new_from_page(p)
-    self.new(p.text, "https://pokemondb.net#{p.attribute("href")}")
+  def initialize(name=nil, pokemon_url=nil)
+    @name = name
+    @pokemon_url = pokemon_url
+    @description = get_description
+    @@all << self
+  end
+
+  def self.all
+    @@all
   end
 
   def get_description
-    # Scrape description
+    pokemon_details.css("p").first.text
   end
 
-  def pokemon
+  def pokemon_details
     Nokogiri::HTML(open(self.pokemon_url))
   end
 

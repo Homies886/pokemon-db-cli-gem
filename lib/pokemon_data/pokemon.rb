@@ -11,7 +11,6 @@ class PokemonData::Pokemon
   def initialize(name=nil, pokemon_url=nil)
     @name = name
     @pokemon_url = pokemon_url
-    @description = get_description
     @@all << self
   end
 
@@ -19,8 +18,8 @@ class PokemonData::Pokemon
     @@all
   end
 
-  def get_description
-    pokemon_details.css("p").first.text
+  def description
+    @description ||= pokemon_details.css("p").first.text
   end
 
   def pokemon_details

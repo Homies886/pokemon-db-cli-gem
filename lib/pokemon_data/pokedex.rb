@@ -3,6 +3,8 @@ class PokemonData::Pokedex
   attr_accessor :name, :pokedex_url, :list_pokemon, :make_pokemon
   attr_reader :pokemon
 
+  @@all = []
+
   def self.new_from_page(p)
     self.new(p.text, "https://pokemondb.net#{p.attribute("href")}")
   end
@@ -11,12 +13,17 @@ class PokemonData::Pokedex
     @name = name
     @pokedex_url = pokedex_url
     @pokemon = []
+    @@all << self
     make_pokemon
+  end
+
+  def self.all
+    @@all
   end
 
   def list_pokemon
     @pokemon.each_with_index do |n, index|
-      puts "#{(index + 1)}. #{n.name}"
+      puts "#{(index + 1)}. #{n}"
   end
 
   def make_pokemon

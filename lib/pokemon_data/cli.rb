@@ -22,7 +22,9 @@ class PokemonData::CLI
     puts "Please enter the name of the pokemon you would like more information on"
     input = gets.strip
 
-    print_pokemon_description(input.capitalize)
+    pokemon = PokemonData::Pokemon.find_by_name(input.capitalize)
+
+    print_pokemon_description(pokemon)
 
     puts ""
     puts "Would you like to view information on another Pokedex/Pokemon? Enter Y or N"
@@ -43,7 +45,7 @@ class PokemonData::CLI
 
   def print_pokemon_description(pokemon)
     puts ""
-    puts
+    puts "#{pokemon.description}"
   end
-  
+
 end

@@ -18,6 +18,10 @@ class PokemonData::Pokemon
     @@all
   end
 
+  def self.find_by_name(name)
+    all.detect{ |s| s.name == name }
+  end
+
   def description
     @description ||= pokemon_details.css("p").first.text
   end

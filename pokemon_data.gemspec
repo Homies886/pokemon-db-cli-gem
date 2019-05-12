@@ -7,7 +7,7 @@ Gem::Specification.new do |s|
   s.email         = ["'niko876@hotmail.com'"]
   s.summary       = "Pokemon Data"
   s.description   = "Provides data on all 809 Pokemon"
-  s.homepage      = "TODO: Put your gem's website or public repo URL here."
+  s.homepage      = "https://github.com/Homies886/pokemon-db-cli-gem"
   s.license       = "MIT"
 
   s.add_development_dependency "bundler", "~> 2.0"

@@ -61,8 +61,6 @@ class PokemonData::CLI
 
   def print_pokemon_list(game)
     puts ""
-    PokemonData::Pokemon.all.each_with_index do |v, index|
-      puts "#{(index + 1)}. #{v}"
-    end  
+    game.list_pokemon
   end
 end

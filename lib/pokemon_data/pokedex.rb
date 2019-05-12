@@ -21,7 +21,7 @@ class PokemonData::Pokedex
   end
 
   def self.find_by_name(name)
-    all.detect{ |s| s.name == name }
+    self.all.detect{ |s| s.name == name }
   end
 
   def list_pokemon

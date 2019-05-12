@@ -21,13 +21,14 @@ class PokemonData::Pokedex
     @@all
   end
 
-  def self.find(id)
-    self.all[id-1]
+  def self.find_by_name(name)
+    all.detect{ |s| s.name == name }
   end
 
   def list_pokemon
     @pokemon.each_with_index do |n, index|
       puts "#{(index + 1)}. #{n}"
+    end  
   end
 
   def make_pokemon

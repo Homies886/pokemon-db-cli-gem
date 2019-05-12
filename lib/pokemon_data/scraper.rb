@@ -1,4 +1,4 @@
-class PokemonData:Scraper
+class PokemonData::Scraper
 
   def get_page
     Nokogiri::HTML(open("https://pokemondb.net/pokedex"))

@@ -1,3 +1,13 @@
+require 'pry'
+require 'nokogiri'
+require 'open-uri'
+
+require_relative '../pokemon_data/scraper'
+require_relative '../pokemon_data/pokedex'
+require_relative '../pokemon_data/pokemon'
+require_relative '../pokemon_data/version'
+
+
 # User initializes cli
 # Scaper hits pokedex page => pokedexes are and displayed
 # A user selects a pokedex => pokedex scrapes its page to populate pokemon, if necessary => list of pokemon are displayed
@@ -14,7 +24,7 @@ class PokemonData::CLI
     puts "Please enter the number of the Pokedex you want to view"
     PokemonData::Pokedex.all.each_with_index do |v, index|
       puts "#{(index + 1)}. #{v}"
-    end  
+    end
     input = gets.strip
 
     print_pokemon_list(input.capitalize)

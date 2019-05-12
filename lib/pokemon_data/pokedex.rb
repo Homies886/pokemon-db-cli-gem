@@ -1,7 +1,6 @@
 class PokemonData::Pokedex
 
-  attr_accessor :name, :pokedex_url, :list_pokemon, :make_pokemon
-  attr_reader :pokemon
+  attr_accessor :name, :pokedex_url, :list_pokemon, :make_pokemon, :pokemon
 
   @@all = []
 
@@ -13,7 +12,7 @@ class PokemonData::Pokedex
     @name = name
     @pokedex_url = pokedex_url
     @pokemon = []
-    @@all << self
+    @@all << self.name
     make_pokemon
   end
 
@@ -28,7 +27,7 @@ class PokemonData::Pokedex
   def list_pokemon
     @pokemon.each_with_index do |n, index|
       puts "#{(index + 1)}. #{n}"
-    end  
+    end
   end
 
   def make_pokemon
@@ -41,7 +40,7 @@ class PokemonData::Pokedex
   end
 
   def pokemon_list
-    Nokogiri::HTML(open(self.pokemon_url))
+    Nokogiri::HTML(open(self.pokedex_url))
   end
 
 end

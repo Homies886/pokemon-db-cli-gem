@@ -2,10 +2,10 @@ require 'pry'
 require 'nokogiri'
 require 'open-uri'
 
+require_relative '../pokemon_data/version'
 require_relative '../pokemon_data/scraper'
 require_relative '../pokemon_data/pokedex'
 require_relative '../pokemon_data/pokemon'
-require_relative '../pokemon_data/version'
 
 
 # User initializes cli

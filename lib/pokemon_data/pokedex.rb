@@ -12,7 +12,7 @@ class PokemonData::Pokedex
     @name = name
     @pokedex_url = pokedex_url
     @pokemon = []
-    @@all << self.name
+    @@all << self
     make_pokemon
   end
 
@@ -20,8 +20,8 @@ class PokemonData::Pokedex
     @@all
   end
 
-  def self.find_by_name(name)
-    self.all.detect{ |s| s.name == name }
+  def self.find(id)
+    self.all[id-1]
   end
 
   def list_pokemon
@@ -37,6 +37,10 @@ class PokemonData::Pokedex
       @pokemon << name unless @pokemon.include?(name)
       PokemonData::Pokemon.new_from_pokedex(name, pokemon_url)
     end
+  end
+
+  def get_pokemon_name_via_id(num)
+    @pokemon[num-1]
   end
 
   def pokemon_list

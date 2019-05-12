@@ -11,7 +11,7 @@ class PokemonData::Pokemon
   def initialize(name=nil, pokemon_url=nil)
     @name = name
     @pokemon_url = pokemon_url
-    @@all << self.name unless @@all.include?(self.name)
+    @@all << self unless @@all.include?(self)
   end
 
   def self.all
@@ -19,7 +19,7 @@ class PokemonData::Pokemon
   end
 
   def self.find_by_name(name)
-    self.all.detect{ |s| s.name == name }
+    self.all.detect{|s| s.name == name}
   end
 
   def description

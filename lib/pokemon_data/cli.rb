@@ -27,7 +27,13 @@ class PokemonData::CLI
     end
     input = gets.strip
 
-    pokedex = PokemonData::Pokedex.find(input.to_i).list_pokemon
+    pokedex = PokemonData::Pokedex.find(input.to_i)
+
+    if pokedex == nil
+      puts ""
+      puts "I'm sorry. I don't understand that answer."
+      return start
+    end
 
     print_pokemon_list(pokedex)
 
@@ -36,6 +42,12 @@ class PokemonData::CLI
     input = gets.strip
 
     pokemon_name = pokedex.get_pokemon_name_via_id(input.to_i)
+
+    if pokemon_name == nil
+      puts ""
+      puts "I'm sorry. I don't understand that answer."
+      return start
+    end
 
     pokemon = PokemonData::Pokemon.find_by_name(pokemon_name)
 
@@ -59,7 +71,6 @@ class PokemonData::CLI
   end
 
   def print_pokemon_description(pokemon)
-    #puts ""
     puts pokemon.description
   end
 

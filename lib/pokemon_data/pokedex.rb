@@ -21,7 +21,7 @@ class PokemonData::Pokedex
   end
 
   def self.find(id)
-    self.all[id-1]
+    self.all[id-1] ? self.all[id-1] : nil
   end
 
   def list_pokemon
@@ -40,7 +40,7 @@ class PokemonData::Pokedex
   end
 
   def get_pokemon_name_via_id(num)
-    @pokemon[num-1]
+    @pokemon[num-1] ? @pokemon[num-1] : nil
   end
 
   def pokemon_list

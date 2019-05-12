@@ -11,7 +11,7 @@ class PokemonData::Pokemon
   def initialize(name=nil, pokemon_url=nil)
     @name = name
     @pokemon_url = pokemon_url
-    @@all << self
+    @@all << self.name unless @@all.include?(self.name)
   end
 
   def self.all

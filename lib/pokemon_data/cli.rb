@@ -21,7 +21,7 @@ class PokemonData::CLI
 
   def start
     puts ""
-    puts "Please enter the number of the Pokedex you want to view"
+    puts "Please enter the name of the Pokedex you want to view"
     PokemonData::Pokedex.all.each_with_index do |v, index|
       puts "#{(index + 1)}. #{v}"
     end
@@ -61,6 +61,8 @@ class PokemonData::CLI
 
   def print_pokemon_list(game)
     puts ""
-    puts "#{game.list_pokemon}"
+    PokemonData::Pokemon.all.each_with_index do |v, index|
+      puts "#{(index + 1)}. #{v}"
+    end  
   end
 end

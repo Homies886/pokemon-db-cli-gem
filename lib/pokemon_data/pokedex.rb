@@ -25,7 +25,7 @@ class PokemonData::Pokedex
   end
 
   def list_pokemon
-    @pokemon.each_with_index do |n, index|
+    @list_pokemon = @pokemon.each_with_index do |n, index|
       puts "#{(index + 1)}. #{n}"
     end
   end

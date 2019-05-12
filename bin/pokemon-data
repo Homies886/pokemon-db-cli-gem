@@ -1,5 +1,5 @@
 #!/usr/bin/env ruby
 
-require_relative '../lib/worlds_best_restaurants'
+require_relative '../lib/pokemon_data'
 
-WorldsBestRestaurants::CLI.new.call
+PokemonData::CLI.new.call

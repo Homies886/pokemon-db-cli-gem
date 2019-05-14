@@ -1,16 +1,3 @@
-require 'pry'
-require 'nokogiri'
-require 'open-uri'
-
-require_relative '../pokemon_data/version'
-require_relative '../pokemon_data/scraper'
-require_relative '../pokemon_data/pokedex'
-require_relative '../pokemon_data/pokemon'
-
-
-# User initializes cli
-# Scaper hits pokedex page => pokedexes are and displayed
-# A user selects a pokedex => pokedex scrapes its page to populate pokemon, if necessary => list of pokemon are displayed
 class PokemonData::CLI
 
   def call
@@ -71,6 +58,7 @@ class PokemonData::CLI
   end
 
   def print_pokemon_description(pokemon)
+    puts ""
     puts pokemon.description
   end
 
